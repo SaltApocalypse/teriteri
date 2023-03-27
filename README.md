@@ -26,11 +26,11 @@
 
 # 主题预览
 
-![](https://cdn.jsdelivr.net/gh/907577659/CDN/post/teriteri/1.png)
+![](https://cdn.jsdelivr.net/gh/907577659/CDN/Posts/teriteri/1.png)
 
-![](https://cdn.jsdelivr.net/gh/907577659/CDN/post/teriteri/2.png)
+![](https://cdn.jsdelivr.net/gh/907577659/CDN/Posts/teriteri/2.png)
 
-![](https://cdn.jsdelivr.net/gh/907577659/CDN/post/teriteri/3.png)
+![](https://cdn.jsdelivr.net/gh/907577659/CDN/Posts/teriteri/3.png)
 
 # 安装步骤
 
