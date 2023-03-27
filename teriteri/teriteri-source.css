@@ -1,0 +1,57 @@
+/* 源代码模式 */
+#typora-source {
+    background: transparent;
+    font-family: var(--source);
+}
+
+#typora-source div {
+    border-radius: var(--radius-l3);
+}
+
+/* 书写区 */
+#typora-source .CodeMirror-lines {
+    background-color: var(--write-bg-color);
+    backdrop-filter: blur(3px) saturate(150%);
+    border-radius: var(--radius-l2);
+    letter-spacing: 0.05rem;
+    word-break: break-word;
+    margin-top: 2.5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 10%;
+    max-width: 1050px;
+}
+
+/* 行号 */
+#typora-source .CodeMirror-linenumber {
+    padding: 0 3px 0 5px;
+    text-align: right;
+    color: var(--border-color);
+}
+
+/* 代码内鼠标样式 */
+#typora-source .CodeMirror div.CodeMirror-cursor {
+    animation: scale 1s infinite;
+    border-left: 1.5px solid var(--black);
+    z-index: 3;
+}
+
+/* 自定义的闪烁样式，灵感来自VSCode */
+@keyframes scale {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+/* 标题 */
+#typora-source .cm-header {
+    color: var(--title-color);
+}

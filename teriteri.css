@@ -1,0 +1,654 @@
+/* 字符编码 */
+@charset "UTF-8";
+
+/* 引入 */
+/* 代码块 */
+@import "./teriteri/teriteri-codemirror.css";
+/* 源代码模式 */
+@import "./teriteri/teriteri-source.css";
+
+/* 字体 */
+/* Font: 思源黑体
+LICENSE: https://www.apache.org/licenses/LICENSE-2.0 */
+@font-face {
+    font-family: 'Source Han Sans CN';
+    font-weight: 300;
+    src: url("./teriteri/SourceHanSansCN-Light.otf") format('opentype');
+}
+
+@font-face {
+    font-family: 'Source Han Sans CN';
+    font-weight: 400;
+    src: url("./teriteri/SourceHanSansCN-Normal.otf") format('opentype');
+}
+
+@font-face {
+    font-family: 'Source Han Sans CN';
+    font-weight: 500;
+    src: url("./teriteri/SourceHanSansCN-Medium.otf") format('opentype');
+}
+
+/* Font: Cascadia Code 
+LICENSE: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL */
+@font-face {
+    font-family: 'Cascadia Code';
+    font-weight: 400;
+    src: url('./teriteri/CascadiaCodePL.woff2') format('woff2');
+}
+
+/* root */
+:root {
+    /* -字体- */
+    /* 正文 */
+    --font-family-base: 'Source Han Sans CN', Emoji, 'Cascadia Code';
+    /* 正文英文 */
+    --font-family-monospace: 'Cascadia Code', Consolas;
+    /* 代码区 */
+    --font-code-monospace: 'Cascadia Code', Consolas, 'Source Han Sans CN';
+    /* 源代码模式 */
+    --source: 'Cascadia Code', 'Source Han Sans CN', Emoji;
+
+    /* 色彩 */
+    /* 基础 */
+    --black: #000;
+    --white: #fff;
+    /* 自定义 */
+    /* 白色背景颜色 */
+    --bg-color-white: #f0f0f0;
+    /* 边框颜色 */
+    --border-color: darkslategray;
+    /* 边框颜色（亮色） */
+    --border-light-color: lightslategray;
+    /* 展开背景颜色 */
+    --expand-bg-color: pink;
+    /* 展开文字颜色 */
+    --expand-text-color: white;
+    /* 注释文字颜色 */
+    --comment-color: #f2a900;
+    /* 行内代码颜色 */
+    --inline-code-color: palevioletred;
+    /* 高亮颜色 */
+    --highlight-color: lightpink;
+    /* 链接颜色 */
+    --link-color: palevioletred;
+    /* 链接悬停颜色 */
+    --link-hover-color: plum;
+    /* 公式预览底色 */
+    --math-bg-color: #d8d8d8;
+    /* 通用背景颜色 */
+    --normal-background-color: palevioletred;
+    /* 通用悬停时背景颜色 */
+    --normal-hover-background-color: plum;
+    /* 未选择时颜色 */
+    --notselected-color: gray;
+    /* 任务列表完成栏文字颜色 */
+    --task-list-done-color: palevioletred;
+    /* 正文文字颜色 */
+    --text-color: #374447;
+    /* 标题文字颜色 */
+    --title-color: #55585c;
+    /* 搜索时当前被选中颜色 */
+    --search-select-bg-color: #ffb34780;
+    /* 搜索结果背景颜色 */
+    --select-text-bg-color: pink;
+    /* 搜索结果文字颜色 */
+    --select-text-font-color: white;
+    /* url链接颜色 */
+    --url-color: #dda0dd;
+    /* write区域背景颜色 */
+    --write-bg-color: rgba(240, 240, 240, 0.8);
+    /* write区域内层背景颜色 */
+    --write-dbbg-color: rgba(240, 240, 240, 0.65);
+
+    /* -圆角- */
+    --radius-l0: 5px;
+    --radius-l1: 10px;
+    --radius-l2: 20px;
+    --radius-l3: 35px;
+}
+
+/* 编辑区 */
+/* NOTE:现在看样子貌似是加了白底很没啥效果了，light不是很好改啊QAQ */
+#write {
+    background-color: var(--write-bg-color);
+    /* 手搓亚克力 */
+    backdrop-filter: blur(3px) saturate(150%);
+    border-radius: var(--radius-l2);
+    word-break: break-word;
+    letter-spacing: 0.05rem;
+    margin-top: 2.5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 10%;
+    min-width: 600px;
+}
+
+/* 行内代码 */
+#write :not(pre)>code {
+    border-radius: var(--radius-l0);
+    background-color: var(--write-dbbg-color);
+    -webkit-text-fill-color: var(--inline-code-color);
+    font-family: var(--font-code-monospace);
+    margin: 0px 4px;
+    padding: 2px 4px;
+}
+
+/* 目录附加 tooltip */
+#write div.md-toc-tooltip {
+    border-top: none;
+    border-radius: var(--radius-l0);
+    background-color: var(--write-bg-color);
+    color: var(--text-color);
+    margin: 5px 0;
+    padding: 8px 12px;
+    min-height: 20px;
+}
+
+/* 目录位置修正（点击时上方显示的tooltip和目录有重叠） */
+.md-toc.md-end-block:focus {
+    padding-top: 30px;
+}
+
+/* 表格 */
+/* 表格附加 tooltip */
+#write div.ty-table-edit {
+    border-top: none;
+    border-radius: var(--radius-l0);
+    background-color: var(--write-bg-color);
+    color: var(--text-color);
+    padding: 8px 12px;
+}
+
+/* 边框 */
+#write table:not(.md-grid-board) {
+    border-radius: var(--radius-l0);
+    border: 1.5px solid var(--border-color);
+    margin: 5px 0;
+    border-collapse: collapse;
+}
+
+/* 表头 */
+#write table:not(.md-grid-board) th {
+    background-color: var(--write-bg-color);
+    border-collapse: collapse;
+    border: 1px solid var(--border-color);
+    margin: 20px 0;
+    /* 宽度不小于24px */
+    padding: 12px 8px;
+    word-break: break-word;
+}
+
+/* 行标签 */
+#write table:not(.md-grid-board) tr {
+    border-collapse: collapse;
+    border-bottom: 1px dashed var(--border-light-color);
+    margin: 20px 0;
+}
+
+/* 单元格标签 */
+#write table:not(.md-grid-board) td {
+    border-collapse: collapse;
+    border-left: 1px dashed var(--border-light-color);
+    margin: 20px 0;
+    padding: 12px 8px;
+    word-break: break-word;
+}
+
+/*  单元格鼠标悬停 */
+td {
+    background-color: transparent;
+    transition: background-color 0.6s ease;
+}
+
+td:hover {
+    background-color: var(--write-dbbg-color);
+}
+
+
+/* YAML & Front-Matter */
+.md-meta-block.md-end-block {
+    background-color: var(--write-dbbg-color);
+    border-radius: var(--radius-l1);
+    font-family: var(--font-family-base);
+    font-size: 12px;
+    font-weight: bold;
+    -webkit-text-fill-color: var(--title-color);
+    line-height: 135%;
+    padding: 2.5% 2.5% 2.5% 2.5%;
+}
+
+/* Markdown标记符号 */
+.md-meta,
+.md-blockmeta {
+    color: var(--border-light-color);
+    font-style: normal;
+}
+
+/* 注释 */
+.md-comment {
+    color: var(--comment-color);
+    text-decoration: underline;
+}
+
+/* 链接 */
+a {
+    color: var(--link-color);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-color);
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+/* 高亮 */
+mark {
+    height: 40px;
+    border-radius: var(--radius-l0);
+    background-color: var(--highlight-color);
+    -webkit-text-fill-color: white;
+    margin: 0px 4px;
+    padding: 2px 4px;
+}
+
+/* 链接引用 */
+.md-def-name {
+    color: var(--link-color);
+}
+
+.md-def-name:hover {
+    color: var(--link-hover-color);
+}
+
+/* .md-def-url */
+.md-block-like,
+.md-def-content.md-def-url,
+.md-def-title {
+    color: var(--url-color);
+}
+
+/* 上下标 */
+sub,
+sup {
+    color: var(--inline-code-color);
+}
+
+/* 按钮 */
+button {
+    background-color: transparent;
+}
+
+/* 列表 */
+.md-list-item::marker {
+    color: var(--inline-code-color);
+    font-weight: bold;
+}
+
+/* 复选框和任务列表 */
+/* FIXME:我尝试了多次还是搞不定修改原有的复选框（Input）的样式，
+意外发现下面四段新建了样式并且覆盖在复选框之上
+所以干脆“曲线救国”做了一手覆盖。
+
+/* 任务清单完成时文字 */
+.task-list-done {
+    color: var(--task-list-done-color);
+    padding-left: 8px;
+    text-decoration: line-through;
+}
+
+/* 任务清单未完成时文字 */
+.task-list-not-done {
+    color: var(--text-color);
+    padding-left: 8px;
+}
+
+/* 任务列表文字 */
+.md-end-block.md-p {
+    margin: 7px 10px;
+}
+
+/* 复选框选中了 */
+.md-task-list-item>input:checked:before,
+.md-task-list-item>input[checked]:before {
+    content: '\2605';
+    color: var(--white);
+    background-color: var(--highlight-color);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    line-height: 0.875rem;
+}
+
+/* 复选框未选中 */
+.md-task-list-item>input:before {
+    content: "";
+    border: 1px solid var(--border-light-color);
+    background-color: var(--white);
+    width: 1.2rem;
+    height: 1.2rem;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin-top: -0.8rem;
+    margin-left: -0.1rem;
+    border-radius: 50%;
+}
+
+/* 引用 */
+blockquote {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    border-top-right-radius: var(--radius-l1);
+    border-bottom-right-radius: var(--radius-l1);
+    margin: 20px 40px 20px 40px;
+    padding: 20px;
+    transition: all 0.8s ease;
+}
+
+blockquote:hover {
+    background-color: var(--bg-color-white);
+    border-left-color: var(--bg-color-white);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+}
+
+/* 左边的粉红装饰条 */
+blockquote::before {
+    content: "";
+    background-color: var(--normal-background-color);
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 10px;
+    height: 40%;
+    transition: all 0.6s ease-in;
+    /* FIXME: 一开始想做中间向两边的动画，出了点问题，暂时搁置 */
+    /* 其实这样也还蛮好看（笑 */
+}
+
+blockquote:hover::before {
+    background-color: var(--normal-hover-background-color);
+    height: 100%;
+}
+
+/* 更改引用块中文本的颜色 */
+blockquote p {
+    color: var(--text-color);
+    padding-left: 20px;
+}
+
+blockquote p:first-child {
+    margin-top: 0;
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* body */
+body {
+    font: 100% var(--font-family-base);
+    max-width: 950px;
+}
+
+/* content */
+content {
+    /* 图源：https://www.pixiv.net/artworks/73572009；作者：淺春，侵删 */
+    background-image: url(./teriteri/bg-light.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 40%;
+    background-size: cover;
+    /* 图片高度导致底端状态栏显示瑕疵 */
+    height: inherit !important;
+}
+
+/* 行内数学公式 */
+mjx-container[jax="SVG"] {
+    border-radius: var(--radius-l0);
+    background-color: transparent;
+    -webkit-text-fill-color: var(--inline-code-color);
+    margin: 0px 4px;
+    padding: 2px 4px;
+}
+
+/* 行内数学公式编辑 */
+.md-inline-math script {
+    background-color: var(--write-dbbg-color);
+    border-radius: var(--radius-l0);
+    color: var(--highlight-color);
+    margin: 0px 4px;
+    padding: 2px 4px;
+}
+
+/* 行内数学公式上方公示预览 */
+/* 重新写的箭头 */
+.md-arrow::after {
+    /* 这个有点搞，width拿来隐藏原来的正方形旋转 */
+    content: '\25B2' !important;
+    width: 0px !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    /* 然后手动添加了一个三角形并且移动位置以达到效果 */
+    color: var(--white);
+    font-size: 8px !important;
+    margin-top: -6px !important;
+    box-shadow: none !important;
+}
+
+/* 下面的预览框 */
+/* FIXME:最顶端有一条白条 */
+#math-inline-preview-content {
+    color: var(--text-color);
+    background-color: var(--white);
+    border-color: var(--border-color);
+    align-items: center;
+    line-height: 20px;
+    height: 34px;
+}
+
+/* 公式块右上角tooltip(.md-rawblock-control) */
+.md-rawblock-tooltip.md-rawblock-control {
+    border-top-left-radius: var(--radius-l0);
+    border-top-right-radius: var(--radius-l0);
+    color: var(--text-color);
+    margin-right: 2%;
+}
+
+/* 公式块编辑 */
+.md-rawblock-container {
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: transparent;
+    border-radius: var(--radius-l1);
+    transform: background-color 1s ease;
+}
+
+.md-rawblock-container:hover {
+    background-color: var(--write-dbbg-color);
+}
+
+.md-rawblock-control.md-rawblock-before {
+    border-top-left-radius: var(--radius-l1);
+    border-top-right-radius: var(--radius-l1);
+}
+
+.md-rawblock-control.md-rawblock-after {
+    border-bottom-left-radius: var(--radius-l1);
+    border-bottom-right-radius: var(--radius-l1);
+}
+
+/* 公式块编辑SVG预览 */
+.md-mathjax-preview {
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: transparent;
+    border-radius: var(--radius-l1);
+    transition: background-color 1s ease;
+}
+
+.md-mathjax-preview:hover {
+    background-color: var(--write-dbbg-color);
+}
+
+/* 图片引用 */
+.md-meta.md-before.md-content::before {
+    color: var(--link-hover-color);
+}
+
+.md-image-before-src,
+.md-image-after-src {
+    color: var(--link-color);
+}
+
+.md-image-btn {
+    background-color: var(--normal-background-color);
+}
+
+.md-image-btn:hover {
+    background-color: var(--normal-hover-background-color);
+}
+
+.md-image-btn.ty-focusable-btn.md-image-input-src-btn.selected {
+    background-color: var(--notselected-color);
+}
+
+/* 编辑链接展开URL */
+.md-content.md-url {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+    transition: color 0.75s ease,
+        background-color 0.75s ease;
+}
+
+.md-content.md-url:hover {
+    border-radius: var(--radius-l0);
+    background-color: var(--expand-bg-color);
+    color: var(--expand-text-color);
+    font-size: 14px;
+    padding: 1px 4px 1px 4px;
+}
+
+/* 上方提示框 */
+#md-notification {
+    background-color: var(--white);
+    height: 1061px;
+    margin: 0px;
+}
+
+/* 退出保存提示框 */
+.btn-primary {
+    background-color: var(--normal-background-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--normal-hover-background-color);
+}
+
+/* 搜索框 */
+#md-searchpanel {
+    background-color: white;
+    background-image: none;
+    border-bottom: var(--border-color) 1px dashed !important;
+}
+
+/* 搜索到文字 */
+.md-search-hit,
+.md-search-hit.md-search-select {
+    font: inherit;
+    background-color: var(--search-select-bg-color);
+    border-radius: var(--radius-l0);
+    padding: 0px 2px 2px 2px;
+}
+
+.md-search-hit.md-search-select {
+    border: 1px dashed var(--border-light-color);
+}
+
+/* 水平分割线 */
+hr {
+    border-top: 1px solid var(--highlight-color);
+}
+
+/* 状态栏 */
+footer {
+    /* 完全隐藏 */
+    opacity: 0;
+}
+
+footer:hover {
+    opacity: 1;
+    background-color: var(--white);
+}
+
+/* 右键目录 */
+.context-menu {
+    border-radius: var(--radius-l1);
+}
+
+/* TODO:主题打印 */
+/* @media print {} */
+
+/* TODO:标题悬停，编辑模式不变小，而是特效（闪光/底色） */
+
+/* 六级标题的效果 */
+.md-heading {
+    padding: 15px;
+    border-left: 10px var(--normal-background-color);
+}
+
+.md-heading:before {
+    content: '';
+    background-color: var(--normal-background-color);
+    position: absolute;
+    left: 0px;
+    transition: width 0.8s cubic-bezier(0.30, 0.45, 0, 1.20),
+        background-color 0.8s ease;
+}
+
+.md-heading:hover:before {
+    background-color: var(--normal-hover-background-color);
+    width: 100%;
+}
+
+h1::before {
+    bottom: 10px;
+    height: 68%;
+    width: 10px;
+}
+
+h2::before {
+    bottom: 12px;
+    height: 60%;
+    width: 9.25px;
+}
+
+h3::before {
+    bottom: 14px;
+    height: 52%;
+    width: 8.5px;
+}
+
+h4::before {
+    bottom: 14px;
+    height: 50%;
+    width: 7.75px;
+}
+
+h5::before {
+    bottom: 14px;
+    height: 46%;
+    width: 7px;
+}
+
+h6::before {
+    bottom: 14px;
+    height: 42%;
+    width: 6.25px;
+}
+
+/* 混合模式 */
+.md-heading span {
+    mix-blend-mode: darken;
+}

@@ -1,0 +1,199 @@
+.cm-s-inner .cm-header {
+    color: #bad7df;
+}
+
+.cm-s-inner .cm-quote {
+    color: #090;
+}
+
+.cm-s-inner.cm-negative {
+    color: #d44;
+}
+
+.cm-s-inner.cm-positive {
+    color: #292;
+}
+
+.cm-s-inner.cm-header,
+.cm-s-inner.cm-strong {
+    font-weight: bold;
+}
+
+.cm-s-inner.cm-em {
+    font-style: italic;
+}
+
+.cm-s-inner.cm-link {
+    text-decoration: underline;
+}
+
+.cm-s-inner.cm-strikethrough {
+    text-decoration: line-through;
+}
+
+/* 关键字 */
+.cm-s-inner .cm-keyword {
+    color: #dda0dd;
+    font-style: italic;
+}
+
+.cm-s-inner .cm-atom {
+    color: #219;
+}
+
+/* 数字 def（关键字） */
+.cm-s-inner .cm-number,
+.cm-s-inner .cm-def {
+    color: #2ecc71;
+}
+
+.cm-s-inner .cm-type {
+    color: #6c3483;
+}
+
+/* 变量 操作符*/
+.cm-s-inner .cm-variable,
+.cm-s-inner .cm-operator {
+    color: #00669980;
+}
+
+/* 标点符号
+.cm-s-inner .cm-punctuation {
+    color: red;
+} */
+
+/* 属性名/对象成员名 */
+.cm-s-inner .cm-property {
+    color: #f2a900;
+}
+
+/* 第二类变量 */
+.cm-s-inner .cm-variable-2 {
+    color: yellowgreen;
+}
+
+/* 第三类变量 */
+.cm-s-inner .cm-variable-3 {
+    color: #32cd3280;
+    font-style: italic;
+
+}
+
+/* 变量 */
+.cm-s-inner .cm-type {
+    color: #68c135;
+}
+
+/* 注释 */
+.cm-s-inner .cm-comment,
+.cm-s-inner .cm-meta {
+    color: #FF6600;
+    font-style: italic;
+}
+
+/* 元数据 */
+.cm-s-inner .cm-meta {
+    color: #0074d9;
+}
+
+/* 普通字符串 */
+
+.cm-s-inner .cm-string,
+.cm-s-inner .cm-string-2 {
+    color: #008b8b;
+}
+
+
+.cm-s-inner .cm-qualifier {
+    color: #555;
+}
+
+.cm-s-inner .cm-builtin {
+    color: #30a;
+}
+
+.cm-s-inner .cm-bracket {
+    color: #997;
+}
+
+.cm-s-inner .cm-tag {
+    color: #170;
+}
+
+.cm-s-inner .cm-attribute {
+    color: #00c;
+}
+
+.cm-s-inner .cm-hr {
+    color: #999;
+}
+
+.cm-s-inner .cm-link {
+    color: #00c;
+}
+
+.cm-s-inner .cm-error {
+    color: #f00;
+}
+
+.cm-invalidchar {
+    color: #f00;
+}
+
+/* FIXME:搜索到CodeMirror内文字时，被选择得当前选中文字会有一层颜色更深得底#ffba89 */
+/* 搜索到文字 */
+.cm-search-hit,
+.cm-search-hit.CodeMirror-selectedtext {
+    font: inherit;
+    background-color: var(--search-select-bg-color) !important;
+    border-radius: var(--radius-l0);
+    padding: 0px 2px 0px 2px;
+}
+
+.cm-search-hit.CodeMirror-selectedtext {
+    border: 1px dashed var(--border-light-color);
+    padding: 0px 2px 2px 2px;
+}
+
+.CodeMirror-composing {
+    border-bottom: 2px solid;
+}
+
+/* inner styles for common addons */
+
+div.CodeMirror span.CodeMirror-matchingbracket {
+    color: #0b0;
+}
+
+div.CodeMirror span.CodeMirror-nonmatchingbracket {
+    color: #a22;
+}
+
+.CodeMirror-matchingtag {
+    background: rgba(255, 150, 0, .3);
+}
+
+.CodeMirror-activeline-background {
+    background: #e8f2ff;
+}
+
+
+/* Markdown */
+.md-fences {
+    background-color: transparent;
+    border-radius: var(--radius-l2);
+    border: var(--highlight-color) 4px dashed;
+    font-size: 14px;
+    font-family: var(--font-code-monospace);
+    line-height: 1.5;
+    padding: 12px 8px 12px 8px !important;
+    transition: background-color 1s ease,
+        border 1s ease,
+        border-radius 1s ease;
+}
+
+.md-fences:hover {
+    background-color: var(--bg-color-white);
+    border-radius: 0px;
+    border: var(--highlight-color) 4px solid;
+}
