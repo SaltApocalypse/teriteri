@@ -26,7 +26,11 @@
 
 # 主题预览
 
+![](https://cdn.jsdelivr.net/gh/907577659/teriteri/pics/1.png)
 
+![](https://cdn.jsdelivr.net/gh/907577659/teriteri/pics/2.png)
+
+![](https://cdn.jsdelivr.net/gh/907577659/teriteri/pics/3.png)
 
 # 安装步骤
 
