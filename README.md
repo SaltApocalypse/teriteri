@@ -26,15 +26,15 @@
 
 # 主题预览
 
-![](https://cdn.jsdelivr.net/gh/907577659/teriteri/pics/1.png)
+![](https://cdn.jsdelivr.net/gh/907577659/CDN/post/teriteri/1.png)
 
-![](https://cdn.jsdelivr.net/gh/907577659/teriteri/pics/2.png)
+![](https://cdn.jsdelivr.net/gh/907577659/CDN/post/teriteri/2.png)
 
-![](https://cdn.jsdelivr.net/gh/907577659/teriteri/pics/3.png)
+![](https://cdn.jsdelivr.net/gh/907577659/CDN/post/teriteri/3.png)
 
 # 安装步骤
 
-1. 既然已经在看这些内容了，相比已经位于github仓库界面，右侧选择`release`发布板块，找到最新版本，下载源代码包。
+1. 既然已经在看这些内容了，想必已经位于github仓库界面，右侧选择`release`发布板块，找到最新版本，下载源代码包。
 2. 解压下载好的压缩包，找到里面的`teriteri`**文件夹**和`teriteri.css`**文件**。
 3. 打开本地的Typora主题路径
    1. *Windows*可能在`C:\Users\<您的用户名>\AppData\Roaming\Typora\themes`下，或者你刚安装好Typora可能就在你的安装目录。
