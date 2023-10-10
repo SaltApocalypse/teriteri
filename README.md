@@ -24,11 +24,11 @@
 
 # 主题预览
 
-![](https://cdn.jsdelivr.net/gh/saltapoclypse/CDN/Posts/teriteri/1.png)
+![](https://cdn.jsdelivr.net/gh/saltapocalypse/CDN/Blog/Pages/230328/P1.png)
 
-![](https://cdn.jsdelivr.net/gh/saltapoclypse/CDN/Posts/teriteri/2.png)
+![](https://cdn.jsdelivr.net/gh/saltapocalypse/CDN/Blog/Pages/230328/P2.png)
 
-![](https://cdn.jsdelivr.net/gh/saltapoclypse/CDN/Posts/teriteri/3.png)
+![](https://cdn.jsdelivr.net/gh/saltapocalypse/CDN/Blog/Pages/230328/P3.png)
 
 # 安装步骤
 
